@@ -29,4 +29,14 @@
     <servlet-name>GetMessage</servlet-name>
     <url-pattern>/GetMessage</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewLog</display-name>
+    <servlet-name>ViewLog</servlet-name>
+    <servlet-class>tw.dev.hcfeng.hw5.web.servlet.ViewLog</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewLog</servlet-name>
+    <url-pattern>/ViewLog</url-pattern>
+  </servlet-mapping>
 </web-app>
