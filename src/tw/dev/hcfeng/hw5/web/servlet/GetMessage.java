@@ -65,27 +65,27 @@ public class GetMessage extends HttpServlet {
 				.withMaxNumberOfMessages(1);
 
 		String resultStr = "";
-		while (true) {
-			ReceiveMessageResult rmResult = sqs.receiveMessage(rmRequest);
-			if (rmResult.getMessages().size() > 0) {
-				for (Message mesg : rmResult.getMessages()) {
-					resultStr += mesg.getBody();
-				}
-				// 刪除訊息
-				for (Message mesg : rmResult.getMessages()) {
-					DeleteMessageRequest dmRequest = new DeleteMessageRequest(
-							rmRequest.getQueueUrl(), mesg.getReceiptHandle());
-					sqs.deleteMessage(dmRequest);
-				}
-				break;
-			} else {
-				try {
-					Thread.sleep(3000);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
+		// while (true) {
+		ReceiveMessageResult rmResult = sqs.receiveMessage(rmRequest);
+		if (rmResult.getMessages().size() > 0) {
+			for (Message mesg : rmResult.getMessages()) {
+				resultStr += mesg.getBody();
 			}
-		}
-		out.print(resultStr.replace("==>","<br/>==>"));
+			// 刪除訊息
+			for (Message mesg : rmResult.getMessages()) {
+				DeleteMessageRequest dmRequest = new DeleteMessageRequest(
+						rmRequest.getQueueUrl(), mesg.getReceiptHandle());
+				sqs.deleteMessage(dmRequest);
+			}
+			// break;
+			// } else {
+			// try {
+			// Thread.sleep(3000);
+			// } catch (InterruptedException e) {
+			// e.printStackTrace();
+			// }
+			// }
+			out.print(resultStr.replace("==>", "<br/>==>"));
+		}		
 	}
 }

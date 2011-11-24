@@ -39,4 +39,14 @@
     <servlet-name>ViewLog</servlet-name>
     <url-pattern>/ViewLog</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListLogs</display-name>
+    <servlet-name>ListLogs</servlet-name>
+    <servlet-class>tw.dev.hcfeng.hw5.web.servlet.ListLogs</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListLogs</servlet-name>
+    <url-pattern>/ListLogs</url-pattern>
+  </servlet-mapping>
 </web-app>

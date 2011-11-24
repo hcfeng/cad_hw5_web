@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TimeZone;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -53,6 +54,7 @@ public class SendMessage extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		String numbers = request.getParameter("numbers");
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		sdf.setTimeZone(TimeZone.getTimeZone("GMT+8"));		
 		PrintWriter out = response.getWriter();
 
 		// 定義SQS

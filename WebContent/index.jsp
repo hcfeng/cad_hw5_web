@@ -53,10 +53,12 @@
 		function getMessage() {
 			new Ajax.Request(
 					"GetMessage", { 
-			    	method:'GET',			    	
+			    	method:'POST',				    	
 			    	onComplete:function(result){ 
-			    		addToList(result.responseText);
-			    		setTimeout("getMessage()", 3000);
+			    		if (result.responseText!=''){
+				    		addToList(result.responseText);
+			    		}	
+				    	setTimeout("getMessage()", 5000);			    		
 			    	} 
 			    } );      
         }
@@ -78,9 +80,10 @@
 	<i>範例: 1,2,33,45,77,99</i>
 	<br />
 	<br />
-	<input type="text" id="nums" name="numbers" style="width: 600px;" />
+	<input type="text" id="nums" name="numbers" style="width: 570px;" />
 	<input type="button" value="送出資料" onClick="sendMessage();" />
 	<input type="button" value="清理畫面" onClick="location.reload();" />
+	<input type="button" value="查詢Log檔" onClick="window.open('ListLogs');" />
 	<br/><br/>
 	<div id="dTableDiv" style="text-align: left; width: 820px; OVERFLOW: auto; height: 500px; background: black;" >    
 	 <table id="dTable" style="background: black; width: 800px;">
